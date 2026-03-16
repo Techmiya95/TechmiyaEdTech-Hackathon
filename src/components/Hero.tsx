@@ -47,8 +47,5 @@ const Hero: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) =>
     </section>
   );
 };
-    </section>
-  );
-};
 
 export default Hero;
