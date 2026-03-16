@@ -3,12 +3,12 @@ import React from 'react';
 const About: React.FC = () => {
   return (
     <section id="about" className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-24 text-center">
-      {/* Section 1: Techmiya Solutions */}
+      {/* Section 1: Techmiya Ed-Tech */}
       <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
         <h2 className="gradient-text !mb-4">WHO WE ARE</h2>
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Techmiya Solutions: Building the Digital Horizon</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Techmiya Ed-Tech: Building the Digital Horizon</h3>
         <p className="text-text-secondary leading-relaxed mb-8">
-          Techmiya Solutions is a leading-edge technology innovation hub dedicated to empowering businesses and developers through advanced software ecosystems, AI-driven automation, and secure architectures. We bridge the gap between imagination and execution with premium products.
+          Techmiya Ed-Tech is a leading-edge technology innovation hub dedicated to empowering businesses and developers through advanced software ecosystems, AI-driven automation, and secure architectures. We bridge the gap between imagination and execution with premium products.
         </p>
         <div className="flex gap-4 w-full flex-wrap sm:flex-nowrap">
           {[
