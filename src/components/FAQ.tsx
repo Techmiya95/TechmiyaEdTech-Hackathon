@@ -16,15 +16,15 @@ const FAQ: React.FC = () => {
       <h2 className="neon-text">Frequently Asked Questions</h2>
       <div className="max-w-3xl mx-auto flex flex-col gap-4">
         {faqs.map((faq, i) => (
-          <div key={i} className="glass overflow-hidden">
+          <div key={i} className={`glass overflow-hidden transition-all duration-300 ${openIndex === i ? 'border-primary/30 shadow-[0_0_25px_rgba(0,242,255,0.05)] bg-[#10131b]' : 'hover:border-white/10'}`}>
             <button 
-              className="w-full text-left p-6 flex justify-between items-center hover:bg-white/5 transition-colors"
+              className="w-full text-left p-5 flex justify-between items-center hover:bg-white/3 transition-colors duration-300"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
-              <span className="font-bold text-white pr-4">{faq.q}</span>
-              <span className={`text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-45' : ''}`}>+</span>
+              <span className={`font-bold pr-4 transition-colors duration-300 ${openIndex === i ? 'text-primary' : 'text-white'}`}>{faq.q}</span>
+              <span className={`text-xl font-light text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-45' : ''}`}>+</span>
             </button>
-            <div className={`transition-all duration-300 ${openIndex === i ? 'max-h-40 p-6 pt-0 border-t border-white/5' : 'max-h-0'}`}>
+            <div className={`transition-all duration-300 ${openIndex === i ? 'max-h-40 p-5 pt-0 border-t border-white/5' : 'max-h-0 overflow-hidden'}`}>
               <p className="text-text-secondary text-sm">{faq.a}</p>
             </div>
           </div>

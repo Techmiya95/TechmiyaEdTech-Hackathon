@@ -23,32 +23,30 @@ const Hero: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) =>
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button onClick={onRegisterClick} className="neon-btn px-10 py-4 text-base cursor-pointer">Register Now</button>
-          <button className="px-10 py-4 glass border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all">
+          <button onClick={onRegisterClick} className="neon-btn px-12 py-4 text-lg font-bold cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(0,242,255,0.5)]">Register Now</button>
+          <button className="px-12 py-4 glass border-white/20 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 hover:shadow-lg">
             Learn More
           </button>
         </div>
       </div>
 
-      {/* Floating stats or badges could go here */}
-      <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+      {/* Floating stats */}
+      <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
         {[
-          { label: 'Prize Pool', value: '₹5,00,000+' },
+          { label: 'Prize Pool', value: '₹5L+' },
           { label: 'Participants', value: '500+' },
           { label: 'Tracks', value: '06' },
           { label: 'Hours', value: '48' },
         ].map((stat, i) => (
-          <div key={i} className="text-center group cursor-pointer p-4 rounded-2xl hover:bg-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(0,242,255,0.1)]">
-            <div className="text-3xl md:text-4xl font-black text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500">{stat.value}</div>
-            <div className="text-sm md:text-base uppercase tracking-wider text-text-secondary font-bold mt-2">{stat.label}</div>
+          <div key={i} className="group cursor-pointer p-6 rounded-2xl glass hover:bg-white/5 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_20px_40px_rgba(0,242,255,0.15)] hover:border-primary/30">
+            <div className="text-3xl md:text-5xl font-black text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500 mb-3">{stat.value}</div>
+            <div className="text-sm md:text-lg uppercase tracking-widest text-text-secondary font-bold">{stat.label}</div>
           </div>
         ))}
       </div>
     </section>
   );
 };
-    </section>
-  );
-};
 
 export default Hero;
+
