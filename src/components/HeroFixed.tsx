@@ -98,7 +98,7 @@ const Hero: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) =>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 w-full max-w-[1700px] px-10 animate-slideUp" style={{ animationDelay: '0.2s' }}>
           {[
             { icon: '🏆', title: '1 Lakh Prize Bounty', desc: 'Rewarding elite innovation' },
-            { icon: '💻', title: '24/7 Non Stop Coding', desc: 'Pure building adrenaline' },
+            { icon: '💻', title: '24 hours Non Stop Coding', desc: 'Pure building adrenaline' },
             { icon: '🧠', title: 'Innovation Solutions', desc: 'Solving real-world challenges' },
             { icon: '🚀', title: 'Incubation Opportunities', desc: 'Level up your startup idea' }
           ].map((feature, i) => (
