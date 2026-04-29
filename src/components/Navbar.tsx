@@ -98,7 +98,7 @@ const Navbar: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) 
 
           {/* Large Vertical Menu Links */}
           <div className="flex flex-col items-center gap-8 sm:gap-10 w-full">
-            {['Home', 'About', 'Prizes', 'FAQ', 'Brochure'].map((item, i) => (
+            {['Home', 'About', 'Prizes', 'FAQ', 'Brochure'].map((item) => (
               <a 
                 key={item} 
                 href={item === 'Home' ? '#' : item === 'Brochure' ? '/images/techmiya brochure.pdf' : `#${item.toLowerCase()}`}
