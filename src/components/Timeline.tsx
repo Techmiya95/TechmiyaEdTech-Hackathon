@@ -17,7 +17,7 @@ const Timeline: React.FC = () => {
       <div className="text-center w-full max-w-[800px] flex flex-col items-center gap-4">
          <h2 className="gradient-text !mb-4">EVENT SCHEDULE</h2>
          <p className="text-text-secondary text-lg leading-relaxed">
-           A comprehensive timeline of our 48-hour innovation marathon.
+           A comprehensive timeline of our 24-hour innovation marathon.
          </p>
       </div>
 

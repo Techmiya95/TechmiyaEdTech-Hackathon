@@ -39,10 +39,11 @@ const Navbar: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-12">
           <div className="flex items-center gap-10">
-            {['Home', 'About', 'Prizes', 'FAQ'].map((item) => (
+            {['Home', 'About', 'Prizes', 'FAQ', 'Brochure'].map((item) => (
               <a 
                 key={item} 
-                href={item === 'Home' ? '#' : `#${item.toLowerCase()}`}
+                href={item === 'Home' ? '#' : item === 'Brochure' ? '/images/techmiya brochure.pdf' : `#${item.toLowerCase()}`}
+                download={item === 'Brochure' ? 'techmiya brochure.pdf' : undefined}
                 className="text-sm font-bold text-white/70 hover:text-primary uppercase tracking-[0.2em] transition-all duration-300 relative group"
               >
                 {item}
@@ -70,19 +71,49 @@ const Navbar: React.FC<{ onRegisterClick: () => void }> = ({ onRegisterClick }) 
         </button>
       </div>
 
-      {/* Mobile Menu dropdown */}
-      <div className={`absolute top-[calc(100%+4rem)] md:top-[calc(100%+5rem)] left-0 w-full glass bg-bg-dark/95 border-b border-white/5 flex flex-col items-center gap-4 py-6 md:hidden transition-all duration-300 origin-top ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
-        {['Home', 'About', 'Prizes', 'FAQ'].map((item) => (
-          <a 
-            key={item} 
-            href={item === 'Home' ? '#' : `#${item.toLowerCase()}`}
-            onClick={() => setIsOpen(false)}
-            className="text-base font-semibold text-white/80 hover:text-primary transition-colors"
+      {/* Full-Screen Premium Mobile Menu Overlay */}
+      <div className={`fixed inset-0 w-full h-[100dvh] bg-[#020617]/98 backdrop-blur-2xl z-[9999] md:hidden transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+        {/* Animated Background Particles for Menu */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/10 blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-600/10 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <div className="relative h-full flex flex-col items-center justify-center gap-8 px-8">
+          {/* Close Button Inside Menu */}
+          <button onClick={() => setIsOpen(false)} className="absolute top-10 right-10 w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 transition-all">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+
+          {/* Large Vertical Menu Links */}
+          <div className="flex flex-col items-center gap-10 sm:gap-12 w-full">
+            {['Home', 'About', 'Prizes', 'FAQ', 'Brochure'].map((item, i) => (
+              <a 
+                key={item} 
+                href={item === 'Home' ? '#' : item === 'Brochure' ? '/images/techmiya brochure.pdf' : `#${item.toLowerCase()}`}
+                download={item === 'Brochure' ? 'techmiya brochure.pdf' : undefined}
+                onClick={() => setIsOpen(false)}
+                className="text-4xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-cyan-400 transition-all duration-300 animate-slideUp"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+
+          {/* High-Impact Register Button in Menu */}
+          <button 
+            onClick={() => { setIsOpen(false); onRegisterClick(); }} 
+            className="neon-btn w-full max-w-[300px] py-5 text-lg font-black uppercase tracking-[0.2em] rounded-2xl mt-12 shadow-[0_0_30px_rgba(34,211,238,0.2)]"
           >
-            {item}
-          </a>
-        ))}
-        <button onClick={() => { setIsOpen(false); onRegisterClick(); }} className="neon-btn mt-2">Register Now</button>
+            Register Now
+          </button>
+
+          {/* Branding at Bottom of Menu */}
+          <div className="absolute bottom-16 text-center">
+            <p className="text-white/20 text-xs font-black uppercase tracking-[0.5em]">Techmiya NextGen 1.0</p>
+          </div>
+        </div>
       </div>
 
     </nav>

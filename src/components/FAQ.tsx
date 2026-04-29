@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 const faqs = [
   { q: "Who can participate?", a: "Students, professionals, and tech enthusiasts from all backgrounds are welcome!" },
   { q: "What is the team size?", a: "Teams can range from 1 to 4 members." },
-  { q: "Is there a registration fee?", a: "Participation is completely free of charge." },
-  { q: "Will there be food and accommodation?", a: "Yes, we provide meals, snacks, and resting areas for all 48 hours." },
   { q: "What should I bring?", a: "Your laptop, charger, and any hardware you need for your hack." }
 ];
 
