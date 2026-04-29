@@ -1,16 +1,16 @@
 import React from 'react';
 
 const prizes = [
-  { title: 'Winner', pool: '₹2,00,000', color: 'var(--primary)', icon: '🏆' },
-  { title: 'Runner Up', pool: '₹1,00,000', color: 'var(--secondary)', icon: '🥈' },
-  { title: 'Second Runner Up', pool: '₹50,000', color: 'var(--accent)', icon: '🥉' },
+  { title: 'Price Bounty', pool: '₹1,00,000', color: 'var(--primary)', icon: '🏆' },
+  { title: 'Innovation Prize', pool: 'Special Rewards', color: 'var(--secondary)', icon: '🥈' },
+  { title: 'Best Pitch', pool: 'Incubation', color: 'var(--accent)', icon: '🥉' },
 ];
 
 const Prizes: React.FC = () => {
   return (
     <section id="prizes">
       <h2 className="gradient-text">Exciting Prizes</h2>
-      <div className="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-6 mt-12 px-4 max-w-5xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-6 mt-12 px-4 w-full">
         {prizes.map((prize, i) => (
           <div 
             key={i} 

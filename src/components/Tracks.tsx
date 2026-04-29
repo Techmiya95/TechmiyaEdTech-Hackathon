@@ -61,7 +61,7 @@ const tracks = [
 
 const Tracks: React.FC = () => {
   return (
-    <section id="tracks" className="max-w-7xl mx-auto px-6">
+    <section id="tracks" className="w-full px-6">
       <h2 className="gradient-text !mb-12">Hackathon Tracks</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tracks.map((track, i) => (

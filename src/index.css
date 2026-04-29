@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: var(--primary);
@@ -9,15 +9,15 @@
 }
 
 :root {
-  --primary: #00f2ff;
-  --secondary: #7000ff;
-  --accent: #ff00c8;
-  --bg-dark: #030408;
-  --bg-card: rgba(13, 16, 23, 0.7);
-  --text-primary: #ffffff;
+  --primary: #4ade80; /* Neon Green */
+  --secondary: #22c55e;
+  --accent: #16a34a;
+  --bg-dark: #020617;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --neon-shadow: 0 0 20px rgba(0, 242, 255, 0.2), 0 0 40px rgba(0, 242, 255, 0.1);
+  --glass-border: rgba(74, 222, 128, 0.1);
+  --neon-shadow: 0 0 20px rgba(74, 222, 128, 0.3), 0 0 40px rgba(74, 222, 128, 0.1);
   --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -38,12 +38,162 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   
-  /* Modern Mesh Gradient Background */
+  /* Eco-Tech Mesh Gradient */
   background-image: 
-    radial-gradient(at 0% 0%, rgba(112, 0, 255, 0.12) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(0, 242, 255, 0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(255, 0, 200, 0.08) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(74, 222, 128, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(22, 163, 74, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(34, 197, 94, 0.05) 0px, transparent 50%);
   background-attachment: fixed;
+}
+
+@keyframes float-leaf {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -50px) rotate(15deg); }
+  66% { transform: translate(-20px, -100px) rotate(-10deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 5px var(--primary)); opacity: 0.8; }
+  50% { filter: drop-shadow(0 0 15px var(--primary)); opacity: 1; }
+}
+
+.animate-float-leaf {
+  animation: float-leaf 15s infinite ease-in-out;
+}
+
+/* Anti-Gravity & Floating Animations */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+}
+
+@keyframes levitate {
+  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.2)); }
+  50% { transform: translateY(-10px) scale(1.02); filter: drop-shadow(0 0 40px rgba(34, 211, 238, 0.4)); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 20px rgba(6, 182, 212, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 40px rgba(6, 182, 212, 0.4); }
+}
+
+@keyframes light-streak {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateX(200%) translateY(200%) rotate(45deg); opacity: 0; }
+}
+
+.animate-levitate {
+  animation: levitate 4s ease-in-out infinite;
+}
+
+.animate-float-y {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.light-streak {
+  position: absolute;
+  width: 2px;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.4), transparent);
+  animation: light-streak 5s linear infinite;
+}
+
+.glass-premium {
+  background: rgba(10, 17, 34, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), inset 0 0 10px rgba(6, 182, 212, 0.1);
+}
+
+@keyframes ticker-ltr {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes ticker-rtl {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-ticker-ltr {
+  animation: ticker-ltr 40s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.animate-ticker-rtl {
+  animation: ticker-rtl 40s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@keyframes light-trail {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-flow {
+  animation: gradient-flow 6s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+@keyframes float-particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-text-green {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.8), 0 0 20px rgba(74, 222, 128, 0.4);
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s infinite ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
 }
 
 .glass {
@@ -87,14 +237,14 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  @apply bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 section {
   padding: 100px 6%;
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
 }
 

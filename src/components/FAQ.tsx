@@ -12,20 +12,31 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq">
-      <h2 className="neon-text">Frequently Asked Questions</h2>
-      <div className="max-w-3xl mx-auto flex flex-col gap-4">
+    <section id="faq" className="w-full max-w-[1400px] mx-auto px-4 md:px-12 flex flex-col items-center gap-12">
+      <div className="text-center w-full max-w-[800px] flex flex-col items-center gap-4">
+         <h2 className="gradient-text !mb-4">FREQUENTLY ASKED QUESTIONS</h2>
+         <p className="text-text-secondary text-lg leading-relaxed">
+           Everything you need to know to get ready for the hackathon.
+         </p>
+      </div>
+      
+      <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
         {faqs.map((faq, i) => (
-          <div key={i} className={`glass overflow-hidden transition-all duration-300 ${openIndex === i ? 'border-primary/30 shadow-[0_0_25px_rgba(0,242,255,0.05)] bg-[#10131b]' : 'hover:border-white/10'}`}>
+          <div key={i} className={`glass overflow-hidden transition-all duration-500 rounded-3xl ${openIndex === i ? 'border-blue-500/30 shadow-[0_0_30px_rgba(56,189,248,0.1)] bg-white/[0.04]' : 'border-white/5 hover:border-white/20'}`}>
             <button 
-              className="w-full text-left p-5 flex justify-between items-center hover:bg-white/3 transition-colors duration-300"
+              className="w-full text-left p-6 md:p-8 flex justify-between items-center transition-colors duration-300 group"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
-              <span className={`font-bold pr-4 transition-colors duration-300 ${openIndex === i ? 'text-primary' : 'text-white'}`}>{faq.q}</span>
-              <span className={`text-xl font-light text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-45' : ''}`}>+</span>
+              <span className={`text-xl md:text-3xl font-black tracking-tight pr-4 transition-colors duration-300 ${openIndex === i ? 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600' : 'text-white group-hover:text-cyan-400'}`}>
+                {faq.q}
+              </span>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 ${openIndex === i ? 'border-blue-500 text-blue-500 rotate-45' : 'border-white/20 text-white group-hover:border-cyan-400 group-hover:text-cyan-400'}`}>
+                <span className="text-3xl font-light leading-none -mt-1">+</span>
+              </div>
             </button>
-            <div className={`transition-all duration-300 ${openIndex === i ? 'max-h-40 p-5 pt-0 border-t border-white/5' : 'max-h-0 overflow-hidden'}`}>
-              <p className="text-text-secondary text-sm">{faq.a}</p>
+            <div className={`transition-all duration-500 ${openIndex === i ? 'max-h-60 p-6 md:p-8 pt-0' : 'max-h-0 overflow-hidden'}`}>
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent mb-6"></div>
+              <p className="text-text-secondary text-lg md:text-2xl font-medium leading-relaxed">{faq.a}</p>
             </div>
           </div>
         ))}

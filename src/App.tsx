@@ -7,7 +7,7 @@ import Prizes from './components/Prizes';
 import Timeline from './components/Timeline';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import RegistrationModal from './components/RegistrationModalFixed';
+import RegistrationModal from './components/RegistrationModal';
 import './index.css';
 
 function App() {
@@ -43,94 +43,121 @@ function App() {
   const renderContent = () => {
     const hash = currentHash || '#';
 
-    switch (hash) {
-      case '#register':
-        return (
-          <div 
-            style={{ paddingTop: '160px', paddingBottom: '160px' }}
-            className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
-          >
-            {/* Left Side: Information & Prizes */}
-            <div className="flex flex-col gap-12 text-center items-center lg:sticky lg:top-36 max-w-xl mx-auto lg:mx-0">
-              <div className="flex flex-col items-center">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-none uppercase tracking-tight">
-                  <span className="block">BUILD THE</span>
-                  <span className="gradient-text text-[4.5rem] md:text-[6rem] leading-[0.9] mt-2 block">FUTURE</span>
+    if (hash === '#register') {
+      return (
+        <section id="register" className="min-h-screen bg-black flex flex-col items-center pt-[550px] pb-24 px-6 relative overflow-hidden">
+          {/* Decorative Grid */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.05] pointer-events-none"></div>
+          
+          <div className="max-w-4xl mx-auto w-full flex flex-col gap-24 items-center relative z-10">
+            
+            {/* Top: Premium Registration Form */}
+            <div className="w-full animate-fadeIn">
+              <RegistrationModal isFullPage={true} onClose={closeModal} />
+            </div>
+
+            {/* Bottom: Hero Information */}
+            <div className="w-full space-y-20 animate-slideInUp pb-24 mt-12 relative z-10">
+              <div className="space-y-6 text-center px-4 md:px-0">
+                <h1 className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter">
+                  TECHMIYA <br />
+                  <span className="gradient-text">NEXTGEN 1.0</span>
                 </h1>
-                <p className="text-text-secondary text-xl mt-6 max-w-md leading-relaxed font-medium">
-                  Join Techmiya Hackathon 2026. 48 hours of building, solving, and shaping the tech landscape. 
+                <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto">
+                  Join the Innovation Challenges Series. An International Level 24-Hours Hackathon & National Level Ideathon shaping the tech landscape with elite minds.
                 </p>
               </div>
 
-              {/* Info Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                  { icon: '🚀', title: 'Build Projects', desc: 'Create full features covering modern stacks & AI workflows.' },
-                  { icon: '🤝', title: 'Network Hub', desc: 'Connect with core dev nodes & mentors easily.' },
-                  { icon: '💡', title: 'Upskill Nodes', desc: 'Accelerate learning loops inside actual hacks.' },
-                  { icon: '🍕', title: 'Loaded Setup', desc: 'Swag headers, meals & system backup frames constant.' }
+                  { label: 'Build Projects', icon: '🚀', desc: 'Full-stack AI workflows' },
+                  { label: 'Network Hub', icon: '🤝', desc: 'Elite dev nodes' },
+                  { label: 'Upskill Nodes', icon: '💡', desc: 'Real-world hacks' },
+                  { label: 'Loaded Setup', icon: '🍕', desc: 'Swag & systems' }
                 ].map((item, i) => (
-                  <div key={i} className="glass p-6 border-white/10 hover:border-primary/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center group">
-                    <span className="text-4xl text-primary mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
-                    <h4 className="font-bold text-white text-lg mb-2 group-hover:text-primary transition-colors">{item.title}</h4>
-                    <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
+                  <div key={i} className="glass p-10 rounded-[32px] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)] transition-all duration-500 group text-center flex flex-col items-center border border-white/5 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-500 relative z-10">{item.icon}</div>
+                    <h3 className="text-2xl font-black text-white mb-3 tracking-wide relative z-10">{item.label}</h3>
+                    <p className="text-base text-white/50 font-medium relative z-10">{item.desc}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Prize highlights structure */}
-              <div className="flex flex-col gap-5 w-full">
-                <h3 className="text-xl font-black text-white/90 uppercase tracking-widest flex items-center justify-center gap-2">
-                  <span className="w-1.5 h-6 bg-primary rounded-full shadow-[0_0_8px_rgba(0,242,255,0.6)]"></span>
-                  Exciting Prizes
-                </h3>
-                <div className="flex flex-col gap-3 w-full">
-                  {[
-                    { icon: '🏆', title: 'Winner', pool: '₹2,00,000', color: 'var(--primary)' },
-                    { icon: '🥈', title: 'Runner Up', pool: '₹1,00,000', color: 'var(--secondary)' },
-                    { icon: '🥉', title: '2nd Runner', pool: '₹50,000', color: 'var(--accent)' },
-                  ].map((prize, i) => (
-                    <div key={i} className="glass px-8 py-5 flex items-center justify-between border-white/5 hover:border-primary/20 hover:scale-[1.02] transition-all duration-300 relative group overflow-hidden">
-                       <div className="absolute top-0 left-0 w-1 h-full" style={{ background: prize.color }}></div>
-                       <div className="flex items-center gap-4">
-                         <span className="text-3xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">{prize.icon}</span>
-                         <div className="text-lg font-bold text-white/90">{prize.title}</div>
-                       </div>
-                       <div className="text-xl font-black" style={{ color: prize.color }}>{prize.pool}</div>
-                    </div>
-                  ))}
+              <div className="pt-16 mt-16 relative">
+                {/* Decorative glowing line */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+                
+                <h3 className="text-center text-sm font-black text-white/30 uppercase tracking-[0.4em] mb-12">Incentive Pool</h3>
+                <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-32 relative z-10">
+                  <div className="flex flex-col items-center gap-4 group">
+                    <span className="text-sm font-black text-cyan-400/70 group-hover:text-cyan-400 transition-colors uppercase tracking-[0.2em]">Prize Bounty</span>
+                    <span className="text-6xl md:text-7xl font-black text-white group-hover:gradient-text transition-all duration-500 tracking-tighter">₹1,00,000</span>
+                  </div>
+                  <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+                  <div className="flex flex-col items-center gap-4 group">
+                    <span className="text-sm font-black text-blue-400/70 group-hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Rewards</span>
+                    <span className="text-5xl md:text-6xl font-black text-white group-hover:text-white/80 transition-all duration-500 tracking-tighter">Swag & Goodies</span>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Right Side: Registration Form */}
-            <div className="w-full flex justify-center lg:justify-end">
-              <RegistrationModal isFullPage={true} onClose={closeModal} />
-            </div>
           </div>
-        );
-      default:
-        return (
-          <div className="flex flex-col gap-32 pb-32">
-            <Hero onRegisterClick={openModal} />
-            <About />
-            <div className="border-t border-white/[0.03] w-full"></div>
-            <Tracks />
-            <div className="border-t border-white/[0.03] w-full"></div>
-            <Timeline />
-            <div className="border-t border-white/[0.03] w-full"></div>
-            <Prizes />
-            <div className="border-t border-white/[0.03] w-full"></div>
-            <FAQ />
-          </div>
-         );
+        </section>
+      );
     }
+
+    return (
+      <div className="flex flex-col gap-16 pb-32">
+        <Hero onRegisterClick={openModal} />
+        <About />
+        <div className="border-t border-white/[0.03] w-full"></div>
+        <Tracks />
+        <div className="border-t border-white/[0.03] w-full"></div>
+        <Timeline />
+        <div className="border-t border-white/[0.03] w-full"></div>
+        <Prizes />
+        <div className="border-t border-white/[0.03] w-full"></div>
+        <FAQ />
+      </div>
+    );
   };
 
   return (
-    <div className="bg-bg-dark text-white min-h-screen flex flex-col">
+    <div className="bg-black text-white min-h-screen flex flex-col relative">
+      {/* Global Particle & Light Streak Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Light Streaks */}
+        {[...Array(6)].map((_, i) => (
+          <div 
+            key={`streak-${i}`} 
+            className="light-streak opacity-20" 
+            style={{ 
+              left: `${Math.random() * 100}%`, 
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 15}s`,
+              animationDuration: `${8 + Math.random() * 8}s`
+            }}
+          ></div>
+        ))}
+        {/* Particles */}
+        {[...Array(30)].map((_, i) => (
+          <div 
+            key={i} 
+            className="particle animate-float-particle" 
+            style={{ 
+              left: `${Math.random() * 100}%`, 
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 20}s`
+            }}
+          ></div>
+        ))}
+      </div>
+
       <Navbar onRegisterClick={openModal} />
-      <main className="flex-grow pt-16">
+
+      <main className="flex-grow pt-[350px] md:pt-[450px] relative z-10">
         {renderContent()}
       </main>
       <Footer />
